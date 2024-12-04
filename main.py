@@ -7,7 +7,7 @@ from modules.database import db_init, get_last_date, insert_data
 from modules.requests_prices import get_history
 from modules.tickers import load_tickers
 
-OLDEST_DATE = "1900-01-01"
+OLDEST_DATE = "1971-01-01"
 TICKERS = load_tickers()
 
 backup_init()
