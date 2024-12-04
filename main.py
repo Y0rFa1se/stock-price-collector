@@ -10,7 +10,7 @@ from modules.tickers import load_tickers
 OLDEST_DATE = "1971-01-01"
 TICKERS = load_tickers()
 
-backup_init()
+DRIVE = backup_init()
 db_init(TICKERS)
 
 TODAY = today()
@@ -22,7 +22,7 @@ for ticker in tqdm(TICKERS):
 
     for idx, (start_date, end_date) in enumerate(date_iterator(date, TODAY)):
         data = get_history(ticker, start_date, end_date)
-        insert_data(ticker, data)
+        insert_data(DRIVE, ticker, data)
         sleep(3)
 
     upload("stock.db", "stock_prices.db")
