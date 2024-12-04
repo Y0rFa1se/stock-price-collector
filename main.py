@@ -22,10 +22,10 @@ for ticker in tqdm(TICKERS):
 
     for idx, (start_date, end_date) in enumerate(date_iterator(date, TODAY)):
         data = get_history(ticker, start_date, end_date)
-        insert_data(DRIVE, ticker, data)
+        insert_data(ticker, data)
         sleep(3)
 
-    upload("stock.db", "stock_prices.db")
+    upload(DRIVE, "stock.db", "stock_prices.db")
     sleep(3)
 
 print("Done!")
