@@ -1,0 +1,7 @@
+client_secrets.json
+
+__pycache__/
+stock.db
+
+test.ipynb
+test.db
