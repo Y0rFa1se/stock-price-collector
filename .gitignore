@@ -1,8 +1,8 @@
 client_secrets.json
 
 __pycache__/
+logs/
 stock.db
 
 test.ipynb
 test.db
-stock.log
