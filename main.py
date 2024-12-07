@@ -40,3 +40,5 @@ for idx, ticker in tqdm(enumerate(TICKERS)):
     upload(DRIVE, "stock.db", "stock_prices.db")
     log("\n", TODAY)
     sleep(3)
+
+log("!!! Done !!!\n\n", TODAY)
