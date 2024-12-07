@@ -51,7 +51,6 @@ def insert_data(ticker: str, data):
     ticker += "_prices"
 
     if data.empty:
-        print("No data to insert!")
 
         return
 
@@ -64,5 +63,3 @@ def insert_data(ticker: str, data):
         
     conn.commit()
     conn.close()
-
-    print("Inserted!")
