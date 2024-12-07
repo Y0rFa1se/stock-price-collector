@@ -25,12 +25,16 @@ for idx, ticker in tqdm(enumerate(TICKERS)):
     if not date:
         date = OLDEST_DATE
 
-    log
-
     for idx, (start_date, end_date) in enumerate(date_iterator(date, TODAY)):
-        log(f"| {start_date} ~ {end_date}\n", TODAY)
+        log(f"| {start_date} ~ {end_date} ", TODAY)
         data = get_history(ticker, start_date, end_date)
-        insert_data(ticker, data)
+        
+        response = insert_data(ticker, data)
+        if response:
+            log("O\n", TODAY)
+        else:
+            log("X\n", TODAY)
+            
         sleep(3)
 
     upload(DRIVE, "stock.db", "stock_prices.db")

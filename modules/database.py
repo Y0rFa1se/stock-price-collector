@@ -44,7 +44,7 @@ def get_last_date(ticker: str):
     else:
         return None
     
-def insert_data(ticker: str, data):
+def insert_data(ticker: str, data) -> bool:
     if ticker.startswith("^"):
         ticker = ticker[1:]
 
@@ -52,7 +52,7 @@ def insert_data(ticker: str, data):
 
     if data.empty:
 
-        return
+        return False
 
     conn = sqlite3.connect('stock.db')
     c = conn.cursor()
@@ -63,3 +63,5 @@ def insert_data(ticker: str, data):
         
     conn.commit()
     conn.close()
+
+    return True
