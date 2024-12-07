@@ -18,8 +18,8 @@ db_init(TICKERS)
 
 TODAY = today()
 
-for ticker in tqdm(TICKERS):
-    log(f"{ticker}\n", TODAY)
+for idx, ticker in tqdm(enumerate(TICKERS)):
+    log(f"({idx+1}/{len(TICKERS)}) {ticker}\n", TODAY)
 
     date = get_last_date(ticker)
     if not date:
