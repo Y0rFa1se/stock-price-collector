@@ -19,7 +19,7 @@ db_init(TICKERS)
 TODAY = today()
 
 for ticker in tqdm(TICKERS):
-    log(ticker, TODAY)
+    log(f"{ticker}\n", TODAY)
 
     date = get_last_date(ticker)
     if not date:
@@ -28,7 +28,7 @@ for ticker in tqdm(TICKERS):
     log
 
     for idx, (start_date, end_date) in enumerate(date_iterator(date, TODAY)):
-        log(f"{start_date} ~ {end_date}", TODAY)
+        log(f"| {start_date} ~ {end_date}\n", TODAY)
         data = get_history(ticker, start_date, end_date)
         insert_data(ticker, data)
         sleep(3)
