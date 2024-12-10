@@ -1,9 +1,8 @@
 import sqlite3
 
 def db_init(tickers: list):
-    conn = sqlite3.connect('stock.db')
+    conn = sqlite3.connect('../../files/stock.db')
     conn.execute("PRAGMA journal_mode=WAL;")
-    conn.close()
 
     c = conn.cursor()
     
@@ -34,9 +33,8 @@ def get_last_date(ticker: str):
 
     ticker += "_prices"
 
-    conn = sqlite3.connect('stock.db')
+    conn = sqlite3.connect('../../files/stock.db')
     conn.execute("PRAGMA journal_mode=WAL;")
-    conn.close()
     
     c = conn.cursor()
     
@@ -60,9 +58,8 @@ def insert_data(ticker: str, data) -> bool:
 
         return False
 
-    conn = sqlite3.connect('stock.db')
+    conn = sqlite3.connect('../../files/stock.db')
     conn.execute("PRAGMA journal_mode=WAL;")
-    conn.close()
     
     c = conn.cursor()
 

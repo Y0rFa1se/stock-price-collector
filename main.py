@@ -2,7 +2,7 @@ from time import sleep
 from tqdm import tqdm
 
 from modules.backup import backup_init, upload
-from modules.calculate_date import today, date_iterator
+from modules.calculate_date import today, next_day, date_iterator
 from modules.database import db_init, get_last_date, insert_data
 from modules.requests_prices import get_history
 from modules.tickers import load_tickers
@@ -22,7 +22,9 @@ for idx, ticker in tqdm(enumerate(TICKERS)):
     log(f"({idx+1}/{len(TICKERS)}) {ticker}\n", TODAY)
 
     date = get_last_date(ticker)
-    if not date:
+    if date:
+        date = next_day(date)
+    else:
         date = OLDEST_DATE
 
     for idx, (start_date, end_date) in enumerate(date_iterator(date, TODAY)):
@@ -37,7 +39,7 @@ for idx, ticker in tqdm(enumerate(TICKERS)):
             
         sleep(3)
 
-    upload(DRIVE, "stock.db", "stock_prices.db")
+    upload(DRIVE, "../../files/stock.db", "stock_prices.db")
     log("\n", TODAY)
     sleep(3)
 
