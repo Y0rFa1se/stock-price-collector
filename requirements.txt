@@ -1,0 +1,7 @@
+pandas
+yfinance
+python-dateutil
+pydrive
+tqdm
+pymysql
+python-dotenv
