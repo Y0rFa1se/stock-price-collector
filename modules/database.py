@@ -29,16 +29,16 @@ def db_init(tickers: list):
         ticker += "_prices"
 
         c.execute(f"""CREATE TABLE IF NOT EXISTS {ticker} (
-                    idx INT AUTO_INCREMENT PRIMARY KEY,
-                    date DATE,
-                    open DECIMAL(10, 2),
-                    high DECIMAL(10, 2),
-                    low DECIMAL(10, 2),
-                    close DECIMAL(10, 2),
-                    volume INT,
-                    dividends DECIMAL(10, 2),
-                    stock_splits DECIMAL(10, 2)
-                    )""")
+                        idx INT AUTO_INCREMENT PRIMARY KEY,
+                        date DATE,
+                        open DECIMAL(20, 10),
+                        high DECIMAL(20, 10),
+                        low DECIMAL(20, 10),
+                        close DECIMAL(20, 10),
+                        volume BIGINT,
+                        dividends DECIMAL(20, 10),
+                        stock_splits DECIMAL(20, 10)
+                        )""")
         
     conn.commit()
     conn.close()
